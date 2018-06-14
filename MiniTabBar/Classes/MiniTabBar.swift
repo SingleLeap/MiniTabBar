@@ -32,6 +32,7 @@ public protocol MiniTabBarDelegate: class {
 public class MiniTabBar: UIView {
     
     public weak var delegate: MiniTabBarDelegate?
+    public var shouldAnimateTaps = true
     public let keyLine = UIView()
     public override var tintColor: UIColor! {
         didSet {
@@ -103,7 +104,7 @@ public class MiniTabBar: UIView {
     func itemTapped(_ gesture: UITapGestureRecognizer) {
         let itemView = gesture.view as! MiniTabBarItemView
         let selectedIndex = self.itemViews.index(of: itemView)!
-        self.selectItem(selectedIndex)
+        self.selectItem(selectedIndex, animated: shouldAnimateTaps)
     }
     
     public func selectItem(_ selectedIndex: Int, animated: Bool = true) {
