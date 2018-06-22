@@ -70,6 +70,8 @@ class MiniTabBarItemView: UIView {
             titleLabel.frame = CGRect(x: 0, y: self.frame.height, width: self.frame.width, height: 14)
             iconView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
             iconView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+
+            iconView.frame = CGRect(x: 0, y: 0, width: iconView.image!.size.width, height: iconView.image!.size.height)
             iconView.addConstraint(NSLayoutConstraint(item: iconView,
                                                       attribute: .height,
                                                       relatedBy: .equal,
