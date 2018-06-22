@@ -68,7 +68,19 @@ class MiniTabBarItemView: UIView {
                                         y: self.frame.height / 2 + self.item.offset.vertical)
         } else {
             titleLabel.frame = CGRect(x: 0, y: self.frame.height, width: self.frame.width, height: 14)
-            iconView.frame = CGRect(x: self.frame.width / 2 - 13, y: 12, width: 26, height: 20)
+            iconView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            iconView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            iconView.addConstraint(NSLayoutConstraint(item: iconView,
+                                                      attribute: .height,
+                                                      relatedBy: .equal,
+                                                      toItem: iconView,
+                                                      attribute: .width,
+                                                      multiplier: iconView.image!.size.height / iconView.image!.size.width,
+                                                      constant: 0))
+
+            iconView.widthAnchor.constraint(lessThanOrEqualToConstant: 26.0)
+            iconView.heightAnchor.constraint(lessThanOrEqualToConstant: 20.0)
+            //iconView.frame = CGRect(x: self.frame.width / 2 - 13, y: 12, width: 26, height: 20)
         }
     }
     
